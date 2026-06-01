@@ -51,6 +51,41 @@ Each project has its own environment, configuration, notebooks, data paths, and 
 </p>
 
 ---
+
+## Repository Structure
+
+```text
+Interpretability/
+├── README.md
+├── LICENSE
+├── images/
+│   └── overview.png
+├── Supervised_Confidence/
+│   ├── requirements.txt
+│   ├── data/
+│   │   └── Nuclear-envelope/
+│   ├── models/                  # not tracked; downloaded separately
+│   ├── notebooks/
+│   ├── src/
+│   ├── variables/
+│   └── outputs/
+└── Single_Cell_Mask_Interpreter/
+    ├── requirements.txt
+    ├── data/
+    │   └── Nuclear-envelope/
+    ├── models/                  # not tracked; downloaded separately
+    ├── notebooks/
+    └── src/
+```
+
+The repository is organized as two independent project folders:
+
+- **`Supervised_Confidence/`** contains the supervised confidence model, its notebooks, source code, example data structure, precomputed variables, and output figures.
+- **`Single_Cell_Mask_Interpreter/`** contains the single-cell MaskInterpreter workflow, including notebooks, source code, and example single-cell data structure.
+
+Large model files and full datasets are not tracked directly in the GitHub repository. They should be downloaded separately and placed in the expected directories described below.
+
+---
 ## Models, Data & Access
 
 - **`Supervised_Confidence/`**  
