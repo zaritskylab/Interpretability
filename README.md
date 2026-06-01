@@ -88,23 +88,64 @@ Large model files and full datasets are not tracked directly in the GitHub repos
 ---
 ## Models, Data & Access
 
-- **`Supervised_Confidence/`**  
-  - Paired unlabeled→labeled microscopy volumes for in silico labeling (e.g., brightfield → fluorescence).  
-  - Trained to produce confidence scores for in silico labeling predictions; can be used in 2D/3D.
-  - We provide sample data for the nuclear envelope and suitable models in the "confidence data" and "confidence models" folders here:     https://drive.google.com/drive/u/0/folders/1hph8I6x4LdCaC2cbFjj9emrgGqDD2L98.
-  - The data should be downloaded and added to to appropriate folder (Supervised_Confidence/data/Nuclear-envelope). The folders under "confidence models" (unet, mg, confidence) should be downloaded and added under a new folder named models (Supervised_Confidence/models).
-  - Full data used in this paper can be downloaded from the Allen Institute for Cell Science: https://www.allencell.org/data-downloading.html#sectionLabelFreeTrainingData.
-  - If the goal is to replicate results full data should be downloaded and csv files in the data folder should be updated. If the goal is to understand the method we recommend downloading the sample data and using the Jupyter Notebooks to follow the pipeline.
-  - "variables" folder includes confidence predictions and ground truth results for the nuclear envelope. These are used for creating the plots that appear in the "outputs" folder.
+Large data files and trained model checkpoints are not tracked directly in this GitHub repository. Example data and pretrained models should be downloaded separately and placed in the expected project folders.
 
-- **`Single_Cell_Mask_Interpreter/`**  
-  - Paired unlabeled→labeled microscopy volumes for in silico labeling, in the single cell resolution.  
-  - Typical sample contains: label-free volume, cell mask and fluorescense volume.
-  - Trained to produce importance masks for an organelle in a single cell.
-  - We provide sample data for the nuclear envelope as part of the repository. Suitable models can be downloaded from the "single cell models" folder here:     https://drive.google.com/drive/u/0/folders/1hph8I6x4LdCaC2cbFjj9emrgGqDD2L98.
-  - The folders under "single cell models" (unet, mg) should be downloaded and added under a new folder named models (Single_Cell_Mask_Interpreter/models).
-  - This work is based on the work of Nitsan Elmalam. Further training instructions, examples and access to full data are well documented here: https://github.com/zaritskylab/CELTIC/tree/main.
-  - If the goal is to replicate results full data should be downloaded and csv files in the data folder should be updated. If the goal is to understand the method we recommend using the Jupyter Notebooks to follow the pipeline.
+> **Note:** The example data and pretrained models will be made available through Zenodo.  
+> Zenodo DOI: `TODO`
+
+### Supervised Confidence
+
+The **Supervised Confidence** project uses paired label-free microscopy volumes, in silico labeling predictions, MaskInterpreter explanation masks, and ground-truth fluorescence measurements to train and evaluate a supervised confidence model.
+
+Example data and pretrained models for the nuclear envelope example should be organized as follows:
+
+```text
+Supervised_Confidence/
+├── data/
+│   └── Nuclear-envelope/
+│       └── ...
+├── models/
+│   ├── unet/
+│   ├── mg/
+│   └── confidence/
+├── variables/
+└── outputs/
+```
+
+The `models/` directory is not included in the repository and should be created after downloading the pretrained models.
+
+The `variables/` directory contains precomputed confidence predictions and ground-truth evaluation results for the nuclear envelope example. These files are used for generating the plots provided in `outputs/`.
+
+For full reproduction of the paper results, the full microscopy data should be downloaded from the Allen Institute for Cell Science:
+
+https://www.allencell.org/data-downloading.html#sectionLabelFreeTrainingData
+
+After downloading the full data, update the relevant CSV files under `Supervised_Confidence/data/` so that they point to the local data location on your machine or cluster.
+
+### Single Cell Mask Interpreter
+
+The **Single Cell Mask Interpreter** project uses single-cell-resolution label-free microscopy volumes, cell masks, and fluorescence measurements to generate MaskInterpreter explanation masks for single-cell in silico labeling predictions.
+
+Example nuclear envelope data is provided in the repository. Pretrained models should be downloaded separately and organized as follows:
+
+```text
+Single_Cell_Mask_Interpreter/
+├── data/
+│   └── Nuclear-envelope/
+│       └── ...
+├── models/
+│   ├── unet/
+│   └── mg/
+└── outputs/
+```
+
+The `models/` directory is not included in the repository and should be created after downloading the pretrained models.
+
+This project builds on the single-cell in silico labeling framework described in the CELTIC repository:
+
+https://github.com/zaritskylab/CELTIC
+
+For full reproduction or training on additional organelles, follow the CELTIC data preparation instructions and update the local paths and metadata files accordingly.
 
 ---
 
