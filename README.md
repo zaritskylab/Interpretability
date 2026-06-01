@@ -212,29 +212,54 @@ Additional notebooks are provided for training and inference with or without con
 
 ---
 
-## Citation & Credit (TODO)
+## Citation
 
-If you use this **code** or **data**, please **cite** the associated paper and this repository.
+If you use this repository, please cite the associated paper and repository.
 
-**BibTeX (repo):**
+### Repository
+
 ```bibtex
-@misc{isl_confidence_repo,
-  title        = {ISL-Confidence: Single-Cell Confidence & Interpretability for In-Silico Labeling},
-  author       = {Your Name and Collaborators},
-  year         = {2025},
-  howpublished = {\url{https://github.com/<org>/<repo>}}
+@misc{Trustworthy_in_silico_labeling_2026,
+  title        = {Trustworthy in silico labeling via semantic visual interpretability of image-to-image translation},
+  author       = {Miller, Gad and Ben Nedava, Lion and Zaritsky, Assaf},
+  year         = {2026},
+  howpublished = {\url{https://github.com/zaritskylab/Interpretability}},
+  doi          = {TODO}
 }
 ```
 
-**BibTeX (paper/preprint placeholder):**
+### Paper
+
 ```bibtex
-@article{isl_confidence_paper,
-  title   = {Quantifying Uncertainty in In-Silico Labeling via Single-Cell Confidence and Mask-Based Interpretability},
-  author  = {Your Name and Collaborators},
+@article{Trustworthy_in_silico_labeling_2026,
+  title   = {TODO},
+  author  = {TODO},
   journal = {Preprint},
-  year    = {2025}
+  year    = {2026},
+  doi     = {TODO}
 }
 ```
+
+## Related Repositories and Credits
+
+This work was carried out in collaboration with Lion Ben Nedava. Related MaskInterpreter code can be found here:
+
+https://github.com/lionben89/cell_generator/tree/MaskInterpreter2.0
+
+The single-cell in silico labeling component builds on the CELTIC framework:
+
+https://github.com/zaritskylab/CELTIC
+
+## Contact
+
+For questions, please contact:
+
+- Gad Miller: `TODO`
+- Prof. Assaf Zaritsky: `TODO`
+
+## License
+
+This repository is intended for academic and research use and is licensed under CC BY-NC 4.0. See [LICENSE](LICENSE) for details.
 
 ---
 
