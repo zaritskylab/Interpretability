@@ -151,25 +151,64 @@ For full reproduction or training on additional organelles, follow the CELTIC da
 
 ## Quick Start
 
+Clone the repository:
+
 ```bash
-# Clone the repository
-git clone https://github.com/zaritskylab/Interpretability
+git clone https://github.com/zaritskylab/Interpretability.git
 cd Interpretability
+```
 
-# --- Confidence model ---
-cd interpretability
-conda create -n confidence python=3.10.14
-conda activate confidence
-pip install -r requirements.txt
+Then choose one of the two project workflows below.
 
-# --- Single-cell model ---
-cd ../single_cell
-conda create -n single_cell python=3.9.15
-conda activate single_cell
+### Supervised Confidence
+
+```bash
+cd Supervised_Confidence
+
+conda create -n supervised_confidence python=3.10.14
+conda activate supervised_confidence
+
 pip install -r requirements.txt
 ```
 
-After downloading sample data and models, cloning the repository and installing the packages, you should be able to run the pipeline on the sample data.
+After installing the environment:
+
+1. Download the example data and pretrained models from Zenodo (`TODO`).
+2. Place the files under the expected `data/` and `models/` directories described above.
+3. Open the demonstration notebook:
+
+```bash
+jupyter notebook notebooks/inference.ipynb
+```
+
+The demonstration notebook runs inference with the pretrained confidence model on the nuclear envelope example data. It does not retrain the model and does not overwrite downloaded checkpoints.
+
+Additional notebooks are provided for training, evaluation, and figure generation. See the local project instructions in `Supervised_Confidence/README.md`.
+
+### Single Cell Mask Interpreter
+
+```bash
+cd Single_Cell_Mask_Interpreter
+
+conda create -n single_cell_mask_interpreter python=3.9.15
+conda activate single_cell_mask_interpreter
+
+pip install -r requirements.txt
+```
+
+After installing the environment:
+
+1. Download the pretrained models from Zenodo (`TODO`).
+2. Place the files under the expected `models/` directory described above.
+3. Open the demonstration notebook:
+
+```bash
+jupyter notebook notebooks/inference.ipynb
+```
+
+The demonstration notebook runs MaskInterpreter on the nuclear envelope single-cell example data. It does not retrain the model and does not overwrite downloaded checkpoints.
+
+Additional notebooks are provided for training and inference with or without context. See the local project instructions in `Single_Cell_Mask_Interpreter/README.md`.
 
 ---
 
