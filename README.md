@@ -1,4 +1,4 @@
-# MaskInterpreter Applications for In-Silico Labeling
+# Mask Interpreter Applications for In Silico Labeling
 
 [Preprint (TODO)](#)
 
