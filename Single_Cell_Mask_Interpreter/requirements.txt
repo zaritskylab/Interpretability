@@ -61,7 +61,6 @@ Pygments==2.19.2
 pyparsing==3.2.5
 python-dateutil==2.9.0.post0
 pytz==2025.2
-pywin32==311
 pyzmq==27.1.0
 requests==2.32.5
 requests-oauthlib==2.0.0
@@ -78,11 +77,9 @@ tensorflow==2.8.0
 tensorflow-estimator==2.4.0
 tensorflow-io-gcs-filesystem==0.31.0
 termcolor==3.1.0
-tf-estimator-nightly==2.8.0.dev2021122109
 threadpoolctl==3.6.0
 tifffile==2024.8.30
 torch==2.5.1
-torchaudio==2.5.1
 torchvision==0.20.1
 tornado==6.5.2
 tqdm==4.67.1
