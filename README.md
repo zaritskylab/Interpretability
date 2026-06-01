@@ -1,16 +1,18 @@
-# Confidence Prediction for In-Silico Labeling
+# MaskInterpreter Applications for In-Silico Labeling
+
 [Preprint (TODO)](#)
 
----
+This repository accompanies an upcoming research paper from the Zaritsky Lab of Computational Cell Dynamics on confidence estimation and interpretability for in-silico labeling predictions.
 
-## Project Description
+The repository contains two related but separate projects built on MaskInterpreter:
 
-This repository hosts two tightly related but **separable** projects:
+1. **Supervised Confidence** (`Supervised_Confidence/`)  
+   A supervised patch-level model that uses in-silico labeling predictions and MaskInterpreter explanation masks to estimate prediction reliability.
 
-- **`interpretability/`** — Patch level confidence model for in silico labeling with detailed analysis pipelines.
-- **`single_cell/`** — Single-cell model for in silico labeling prediction and visual explanation generation.  
+2. **Single Cell Mask Interpreter** (`Single_Cell_Mask_Interpreter/`)  
+   An application of MaskInterpreter to single-cell-resolution in-silico labeling, producing visual explanations for single-cell predictions.
 
-Each folder has **its own Python environment** and **paths/configs**. Keep them isolated.
+Each project is placed under its own folder and uses its own Python environment and configuration. Please keep the two environments isolated.
 
 In addition, this repository is part of a research paper done by the Zaritsky Lab of Computational Cell Dynamics that is set to be published. This research is done in collaboration with Lion Ben Nedava and his work can be found here: https://github.com/lionben89/cell_generator/tree/MaskInterpreter2.0.
 
