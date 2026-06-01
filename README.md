@@ -1,30 +1,50 @@
-# Mask Interpreter Applications for In Silico Labeling
+# MaskInterpreter Applications for In Silico Labeling
 
 [Preprint (TODO)](#)
 
-This repository accompanies an upcoming research paper from the Zaritsky Lab of Computational Cell Dynamics on confidence estimation and interpretability for in-silico labeling predictions.
+This repository accompanies an upcoming research paper from the Zaritsky Lab of Computational Cell Dynamics on confidence estimation and interpretability for in silico labeling predictions.
 
-The repository contains two related but separate projects built on MaskInterpreter:
+## Project Description
 
-1. **Supervised Confidence** (`Supervised_Confidence/`)  
-   A supervised patch-level model that uses in-silico labeling predictions and MaskInterpreter explanation masks to estimate prediction reliability.
+This repository contains two related applications of MaskInterpreter for in silico labeling microscopy models. Although both projects use MaskInterpreter-based explanations, they answer different questions and should be treated as separate workflows.
 
-2. **Single Cell Mask Interpreter** (`Single_Cell_Mask_Interpreter/`)  
-   An application of MaskInterpreter to single-cell-resolution in-silico labeling, producing visual explanations for single-cell predictions.
+### 1. Supervised Confidence
 
-Each project is placed under its own folder and uses its own Python environment and configuration. Please keep the two environments isolated.
+The **Supervised Confidence** project uses MaskInterpreter explanation masks as part of a supervised model for estimating the reliability of in silico labeling predictions.
 
-In addition, this repository is part of a research paper done by the Zaritsky Lab of Computational Cell Dynamics that is set to be published. This research is done in collaboration with Lion Ben Nedava and his work can be found here: https://github.com/lionben89/cell_generator/tree/MaskInterpreter2.0.
+- **Input:** In silico labeling predictions and their corresponding MaskInterpreter explanation masks.
+- **Goal:** Estimate how reliable an in silico labeling prediction is at the patch level.
+- **Output:** A confidence score together with evaluation metrics and downstream analyses.
+- **Main use case:** Identifying which in silico labeling predictions are reliable enough for downstream biological analysis.
 
-### Brief research & code overview
+This project is located under:
 
-- **Goal**: Quantify confidence for in silico labeling predictions and provide a tool for for deciding which predictions are reliable for biological analysis.  
-- **Significance**: Improves trust and deployment of in silico labeling in biological imaging by telling **where** and **why** a prediction is reliable.  
-- **Key features**
-  - *3D confidence model* that ingests in silico labeling predictions + explanation masks and regresses a per-cell/per-patch quality target.
-  - *Detailed analysis* to understand cell-level or FOV-level mistakes.
-  - *Example applications* that can be performed using this method.
+```text
+Supervised_Confidence/
+```
 
+### 2. Single Cell Mask Interpreter
+
+The **Single Cell Mask Interpreter** project applies MaskInterpreter to single-cell-resolution in silico labeling predictions.
+
+- **Input:** Single-cell label-free microscopy images and in silico labeling model predictions.
+- **Goal:** Generate visual explanations that highlight which regions are important for preserving the in silico labeling prediction.
+- **Output:** Single-cell importance masks and visualization outputs.
+- **Main use case:** Interpreting in silico labeling predictions at single-cell resolution.
+
+This project is located under:
+
+```text
+Single_Cell_Mask_Interpreter/
+```
+
+### Relationship between the projects
+
+The two projects are connected by their use of MaskInterpreter, but they are not the same workflow.
+
+The **Single Cell Mask Interpreter** project focuses on generating visual explanations for single-cell in silico labeling predictions. The **Supervised Confidence** project uses in silico labeling predictions and explanation masks as inputs to a supervised model that predicts confidence or expected prediction quality.
+
+Each project has its own environment, configuration, notebooks, data paths, and model files.
 
 <p align="center">
   <img src="images/overview.png" alt="Project overview" width="520"/>
