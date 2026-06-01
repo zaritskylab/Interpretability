@@ -61,6 +61,7 @@ Interpretability/
 ├── images/
 │   └── overview.png
 ├── Supervised_Confidence/
+│   ├── README.md
 │   ├── requirements.txt
 │   ├── data/
 │   │   └── Nuclear-envelope/
@@ -70,6 +71,7 @@ Interpretability/
 │   ├── variables/
 │   └── outputs/
 └── Single_Cell_Mask_Interpreter/
+    ├── README.md
     ├── requirements.txt
     ├── data/
     │   └── Nuclear-envelope/
@@ -186,6 +188,8 @@ The demonstration notebook runs inference with the pretrained confidence model o
 Additional notebooks are provided for training, evaluation, and figure generation. See the local project instructions in `Supervised_Confidence/README.md`.
 
 ### Single Cell Mask Interpreter
+
+From the repository root:
 
 ```bash
 cd Single_Cell_Mask_Interpreter
