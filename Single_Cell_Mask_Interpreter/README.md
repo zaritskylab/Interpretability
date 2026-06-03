@@ -43,11 +43,17 @@ pip install -r requirements.txt
 
 Example data is provided in the repository for the nuclear envelope example.
 
-Pretrained models will be made available through Zenodo.
+Pretrained models are available through Zenodo.
 
-Zenodo DOI: `TODO`
+Zenodo DOI: `TODO: add final Zenodo DOI after publishing the record`
 
-After downloading, place the model files in the following locations:
+Download the following archive:
+
+```text
+single_cell_models-20260603T070159Z-3-001.zip
+```
+
+After downloading and extracting the archive, arrange the model files under:
 
 ```text
 Single_Cell_Mask_Interpreter/
