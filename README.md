@@ -1,6 +1,6 @@
 # MaskInterpreter Applications for In Silico Labeling
 
-[Preprint (TODO)](#)
+Preprint link will be added upon publication.
 
 This repository accompanies an upcoming research paper from the Zaritsky Lab of Computational Cell Dynamics on confidence estimation and interpretability for in silico labeling predictions.
 
@@ -92,8 +92,21 @@ Large model files and full datasets are not tracked directly in the GitHub repos
 
 Large data files and trained model checkpoints are not tracked directly in this GitHub repository. Example data and pretrained models should be downloaded separately and placed in the expected project folders.
 
-> **Note:** The example data and pretrained models will be made available through Zenodo.  
-> Zenodo DOI: `TODO`
+> **Note:** Example data and pretrained models are available through Zenodo.  
+> Zenodo DOI: `TODO: add final Zenodo DOI after publishing the record`
+
+The Zenodo record contains the following archives:
+
+```text
+confidence_data-20260603T070348Z-3-001.zip
+confidence_data-20260603T070348Z-3-002.zip
+confidence_models-20260603T070310Z-3-001.zip
+single_cell_models-20260603T070159Z-3-001.zip
+```
+
+The `confidence_data` archives contain example data for the **Supervised Confidence** workflow.  
+The `confidence_models` archive contains pretrained models for the **Supervised Confidence** workflow.  
+The `single_cell_models` archive contains pretrained models for the **Single Cell Mask Interpreter** workflow.
 
 ### Supervised Confidence
 
@@ -175,7 +188,7 @@ pip install -r requirements.txt
 
 After installing the environment:
 
-1. Download the example data and pretrained models from Zenodo (`TODO`).
+1. Download `confidence_data-20260603T070348Z-3-001.zip`, `confidence_data-20260603T070348Z-3-002.zip`, and `confidence_models-20260603T070310Z-3-001.zip` from Zenodo.
 2. Place the files under the expected `data/` and `models/` directories described above.
 3. Open the demonstration notebook:
 
@@ -202,7 +215,7 @@ pip install -r requirements.txt
 
 After installing the environment:
 
-1. Download the pretrained models from Zenodo (`TODO`).
+1. Download `single_cell_models-20260603T070159Z-3-001.zip` from Zenodo.
 2. Place the files under the expected `models/` directory described above.
 3. Open the demonstration notebook:
 
@@ -264,8 +277,3 @@ For questions, please contact:
 ## License
 
 This repository is intended for academic and research use and is licensed under CC BY-NC 4.0. See [LICENSE](LICENSE) for details.
-
----
-
-**License**  
-This repository (data, documentation, and figures) is intended for academic and research use, and is licensed under CC BY-NC 4.0. See [License](LICENSE) for details.
