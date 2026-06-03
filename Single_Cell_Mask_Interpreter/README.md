@@ -56,6 +56,18 @@ Single_Cell_Mask_Interpreter/
 │   └── mg/
 ```
 
+## Configuration
+
+Before running the notebooks, copy the example configuration file:
+
+```bash
+cp config.example.yaml config.yaml
+```
+
+Then edit `config.yaml` so that the paths point to the data, models and outputs directories on your machine or cluster.
+
+The notebooks and scripts should read paths from `config.yaml` instead of relying on the current working directory.
+
 ## Running the Demo
 
 After installing the environment and downloading the pretrained models, run:
