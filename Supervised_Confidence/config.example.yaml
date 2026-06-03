@@ -1,0 +1,8 @@
+# Copy this file to config.yaml and edit the paths for your machine.
+
+data_dir: "/path/to/Interpretability/Supervised_Confidence/data"
+model_dir: "/path/to/Interpretability/Supervised_Confidence/models"
+output_dir: "/path/to/Interpretability/Supervised_Confidence/outputs"
+variables_dir: "/path/to/Interpretability/Supervised_Confidence/variables"
+
+organelle: "Nuclear-envelope"
