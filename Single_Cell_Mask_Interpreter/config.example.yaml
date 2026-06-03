@@ -1,0 +1,7 @@
+# Copy this file to config.yaml and edit the paths for your machine.
+
+data_dir: "/path/to/Interpretability/Single_Cell_Mask_Interpreter/data"
+model_dir: "/path/to/Interpretability/Single_Cell_Mask_Interpreter/models"
+output_dir: "/path/to/Interpretability/Single_Cell_Mask_Interpreter/outputs"
+
+organelle: "Nuclear-envelope"
