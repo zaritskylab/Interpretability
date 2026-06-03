@@ -61,6 +61,18 @@ Supervised_Confidence/
 
 The `variables/` directory contains precomputed confidence predictions and ground-truth evaluation results for the nuclear envelope example. These files are used for reproducing example plots.
 
+## Configuration
+
+Before running the notebooks, copy the example configuration file:
+
+```bash
+cp config.example.yaml config.yaml
+```
+
+Then edit `config.yaml` so that the paths point to the data, models, outputs, and variables directories on your machine or cluster.
+
+The notebooks and scripts should read paths from `config.yaml` instead of relying on the current working directory.
+
 ## Running the Demo
 
 After installing the environment and downloading the example data and models, run:
