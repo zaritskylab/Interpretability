@@ -1,3 +1,5 @@
+from pathlib import Path
+import yaml
 import os
 import sys
 import time
@@ -117,18 +119,31 @@ class ResNet3DRegression(nn.Module):
         return x
 
 
-# Define base path for all operations
-BASE_PATH = os.path.dirname(os.getcwd())
+CONFIG_PATH = Path("../config.yaml")
+
+if not CONFIG_PATH.exists():
+    raise FileNotFoundError(
+        "Missing config.yaml. Copy config.example.yaml to config.yaml "
+        "and edit the paths before running this notebook."
+    )
+
+with open(CONFIG_PATH, "r") as f:
+    cfg = yaml.safe_load(f)
+
+DATA_DIR = Path(cfg["data_dir"]).expanduser()
+MODEL_DIR = Path(cfg["model_dir"]).expanduser()
+OUTPUT_DIR = Path(cfg["output_dir"]).expanduser()
+VARIABLES_DIR = Path(cfg["variables_dir"]).expanduser()
+ORGANELLE = cfg["organelle"]
 
 # Variable Paths
-organelle = sys.argv[1]
-unet_model_path = f"{BASE_PATH}/models/unet/{organelle}/"
-mg_model_path = f"{BASE_PATH}/models/mg/{organelle}/"
-conf_model_path = f"{BASE_PATH}/models/confidence/{organelle}/conf_model.pt"
-test_csv_path = f"{BASE_PATH}/data/{organelle}/image_list_test.csv"
+unet_model_path = f"{MODEL_DIR}/unet/{ORGANELLE}/"
+mg_model_path = f"{MODEL_DIR}/mg/{ORGANELLE}/"
+conf_model_path = f"{MODEL_DIR}/confidence/{ORGANELLE}/conf_model.pt"
+test_csv_path = f"{DATA_DIR}/{ORGANELLE}/image_list_test.csv"
 
 input_channel=0
-if organelle == "DNA":
+if ORGANELLE == "DNA":
     target_channel=1
 else:
     target_channel=3
@@ -146,15 +161,14 @@ stride_z = 16
 stride_xy = 32
 
 test_csv = pd.read_csv(test_csv_path)
-save_folder = f"{BASE_PATH}/inference/{organelle}"
-if not os.path.exists(save_folder):
-    os.makedirs(save_folder)
+save_folder = OUTPUT_DIR / "inference" / ORGANELLE
+save_folder.mkdir(parents=True, exist_ok=True)
     
 for path in test_csv['path_tiff']:
-    path = path.replace('Interpretability/interpretability', "")
-    path = BASE_PATH + '/' + path.split('//')[1]
-    image = tiff.imread(path)
-    image_num = path.split('.')[0].split('_')[-1]
+    old_path = Path(path)
+    fixed_path = DATA_DIR / ORGANELLE / old_path.name
+    image = tiff.imread(fixed_path)
+    image_num = fixed_path.stem.split("_")[-1]
 
     input_image = image[input_channel, :, :, :]
     Z, X, Y = input_image.shape

@@ -1,3 +1,5 @@
+from pathlib import Path
+import yaml
 import os
 os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
 import sys
@@ -21,19 +23,33 @@ from src.transforms import normalize, normalize_with_mask, Propper
 
 
 # --- Configuration ---
+CONFIG_PATH = Path("../config.yaml")
+
+if not CONFIG_PATH.exists():
+    raise FileNotFoundError(
+        "Missing config.yaml. Copy config.example.yaml to config.yaml "
+        "and edit the paths before running this notebook."
+    )
+
+with open(CONFIG_PATH, "r") as f:
+    cfg = yaml.safe_load(f)
+
+DATA_DIR = Path(cfg["data_dir"]).expanduser()
+MODEL_DIR = Path(cfg["model_dir"]).expanduser()
+OUTPUT_DIR = Path(cfg["output_dir"]).expanduser()
+ORGANELLE = cfg["organelle"]
+
 CONTINUE_TRAINING = True
 weighted_pcc = False
 signals_are_masked = True
-organelle = sys.argv[1]
 
-BASE_PATH = os.path.dirname(os.getcwd())
-unet_model_path = f"{BASE_PATH}/models/unet/{organelle}/best_model_context.p"
-mg_model_path = f"{BASE_PATH}/models/mg/{organelle}/model_context.pt"
-data_path = f"{BASE_PATH}/data/{organelle}/cells"
-train_csv_path = f"{BASE_PATH}/data/{organelle}/metadata/train_images.csv"
-train_context_path = f"{BASE_PATH}/data/{organelle}/metadata/train_context.csv"
-validation_csv_path = f"{BASE_PATH}/data/{organelle}/metadata/valid_images.csv"
-validation_context_path = f"{BASE_PATH}/data/{organelle}/metadata/valid_context.csv"
+unet_model_path = f"{MODEL_DIR}/unet/{ORGANELLE}/best_model_context.p"
+mg_model_path = f"{MODEL_DIR}/mg/{ORGANELLE}/model_context.pt"
+data_path = f"{DATA_DIR}/{ORGANELLE}/cells"
+train_csv_path = f"{DATA_DIR}/{ORGANELLE}/metadata/train_images.csv"
+train_context_path = f"{DATA_DIR}/{ORGANELLE}/metadata/train_context.csv"
+validation_csv_path = f"{DATA_DIR}/{ORGANELLE}/metadata/valid_images.csv"
+validation_context_path = f"{DATA_DIR}/{ORGANELLE}/metadata/valid_context.csv"
 patch_size = (32, 64, 64, 1)
 
 
@@ -92,7 +108,7 @@ class EarlyStopping:
 
 
 # --- Load context config ---
-with open(f"{RESOURCES_PATH}/{organelle}/models/context_model_config.json", 'r') as file:
+with open(f"{MODEL_DIR}/unet/{ORGANELLE}/context_model_config.json", 'r') as file:
     context_model_config = json.load(file)
 
 transforms_config = context_model_config["transforms"]

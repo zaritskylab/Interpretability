@@ -1,3 +1,5 @@
+from pathlib import Path
+import yaml
 import os
 import sys
 import time
@@ -236,10 +238,9 @@ class RegressionDataset(Dataset):
         num_selected_images = math.ceil((self.max_ - self.min_) * len(self.df))
         start_idx = math.floor(len(self.df) * self.min_)
         image_idx = start_idx + (index // self.patches_from_image) % num_selected_images
-        path = self.df.loc[image_idx, 'path_tiff']
-        path = path.replace('Interpretability/interpretability', "")
-        path = BASE_PATH + '/' + path.split('//')[1]
-        image = np.array(tiff.imread(path))
+        old_path = Path(self.df.loc[image_idx, 'path_tiff'])
+        fixed_path = DATA_DIR / ORGANELLE / old_path.name
+        image = np.array(tiff.imread(fixed_path))
         input_image = image[input_channel, :, :, :]
         target_image = image[target_channel, :, :, :]
 
@@ -299,10 +300,9 @@ class RegressionTestDataset(Dataset):
             patch_idx = index % self.patches_from_image
 
             # Load the correct image
-            path = self.df.loc[image_idx, 'path_tiff']
-            path = path.replace('Interpretability/interpretability', "")
-            path = BASE_PATH + '/' + path.split('//')[1]
-            image = np.array(tiff.imread(path))
+            old_path = Path(self.df.loc[image_idx, 'path_tiff'])
+            fixed_path = DATA_DIR / ORGANELLE / old_path.name
+            image = np.array(tiff.imread(fixed_path))
             input_image = image[input_channel, :, :, :]
             target_image = image[target_channel, :, :, :]
 
@@ -377,19 +377,33 @@ class ResNet3DRegression(nn.Module):
         x = torch.relu(self.fc2(x))  # Output layer
         return x
 
-# Define base path for all operations
-BASE_PATH = os.path.dirname(os.getcwd())
+
+CONFIG_PATH = Path("../config.yaml")
+
+if not CONFIG_PATH.exists():
+    raise FileNotFoundError(
+        "Missing config.yaml. Copy config.example.yaml to config.yaml "
+        "and edit the paths before running this notebook."
+    )
+
+with open(CONFIG_PATH, "r") as f:
+    cfg = yaml.safe_load(f)
+
+DATA_DIR = Path(cfg["data_dir"]).expanduser()
+MODEL_DIR = Path(cfg["model_dir"]).expanduser()
+OUTPUT_DIR = Path(cfg["output_dir"]).expanduser()
+VARIABLES_DIR = Path(cfg["variables_dir"]).expanduser()
+ORGANELLE = cfg["organelle"]
 
 # Variable Paths
-organelle = sys.argv[1]
-unet_model_path = f"{BASE_PATH}/models/unet/{organelle}/"
-mg_model_path = f"{BASE_PATH}/models/mg/{organelle}/"
-train_csv_path = f"{BASE_PATH}/data/{organelle}/image_list_train.csv"
-test_csv_path = f"{BASE_PATH}/data/{organelle}/image_list_test.csv"
+unet_model_path = f"{MODEL_DIR}/unet/{ORGANELLE}/"
+mg_model_path = f"{MODEL_DIR}/mg/{ORGANELLE}/"
+train_csv_path = f"{DATA_DIR}/{ORGANELLE}/image_list_train.csv"
+test_csv_path = f"{DATA_DIR}/{ORGANELLE}/image_list_test.csv"
 
 # Variables for training
 input_channel=0
-if organelle == "DNA":
+if ORGANELLE == "DNA":
     target_channel=1
 else:
     target_channel=3
@@ -474,7 +488,7 @@ for params in grid_search_params:
     elif optimizer[0] == 'sgd':
         params_text = f"best_lr_{lr}_batch_size_{batch_size}_optimizer_{optimizer[0]}_momentum_{optimizer[2]}_use_batchnorm_{use_batchnorm}_use_dropout_{use_dropout}"
 
-    path = f"{BASE_PATH}/models/confidence/{organelle}/{params_text}"
+    path = f"{MODEL_DIR}/confidence/{ORGANELLE}/{params_text}"
     if not os.path.exists(path):
         os.makedirs(path)
     else:
@@ -614,5 +628,5 @@ for params in grid_search_params:
 
     with open(f'{path}/meta_data.json', 'w') as f:
         f.write(json.dumps(meta_data, indent=4))
-    with open(f'{BASE_PATH}/models/confidence/{organelle}/current_top_5.json', 'w') as f:
+    with open(f'{MODEL_DIR}/confidence/{ORGANELLE}/current_top_5.json', 'w') as f:
         f.write(json.dumps(sorted(top_5_loss, reverse=False, key=lambda x: x[0])[:5], indent=4))

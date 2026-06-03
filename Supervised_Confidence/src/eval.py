@@ -1,3 +1,5 @@
+from pathlib import Path
+import yaml
 import os
 import torch
 import torch.nn as nn
@@ -238,10 +240,9 @@ class RegressionTestDataset(Dataset):
             patch_idx = index % self.patches_from_image
 
             # Load the correct image
-            path = self.df.loc[image_idx, 'path_tiff']
-            path = path.replace('Interpretability/interpretability', "")
-            path = BASE_PATH + '/' + path.split('//')[1]
-            image = np.array(tiff.imread(path))
+            old_path = Path(self.df.loc[image_idx, 'path_tiff'])
+            fixed_path = DATA_DIR / ORGANELLE / old_path.name
+            image = np.array(tiff.imread(fixed_path))
             input_image = image[input_channel, :, :, :]
             target_image = image[target_channel, :, :, :]
 
@@ -317,71 +318,76 @@ class ResNet3DRegression(nn.Module):
         return x
 
 
-# Define base path for all operations
-BASE_PATH = os.path.dirname(os.getcwd())
+CONFIG_PATH = Path("../config.yaml")
 
-# Variable Paths
-organelles = ["Mitochondria", "Nucleolus-(Granular-Component)", "Nuclear-envelope", "Actin-filaments", "Microtubules",
-              "Plasma-membrane", "Endoplasmic-reticulum", "DNA"]
+if not CONFIG_PATH.exists():
+    raise FileNotFoundError(
+        "Missing config.yaml. Copy config.example.yaml to config.yaml "
+        "and edit the paths before running this notebook."
+    )
 
-save_folder = f"{BASE_PATH}/variables"
-if not os.path.exists(save_folder):
-    os.makedirs(save_folder)
+with open(CONFIG_PATH, "r") as f:
+    cfg = yaml.safe_load(f)
+
+DATA_DIR = Path(cfg["data_dir"]).expanduser()
+MODEL_DIR = Path(cfg["model_dir"]).expanduser()
+OUTPUT_DIR = Path(cfg["output_dir"]).expanduser()
+VARIABLES_DIR = Path(cfg["variables_dir"]).expanduser()
+ORGANELLE = cfg["organelle"]
     
-for organelle in organelles:
-    unet_model_path = f"{BASE_PATH}/models/unet/{organelle}/"
-    mg_model_path = f"{BASE_PATH}/models/mg/{organelle}/"
-    conf_model_path = f"{BASE_PATH}/models/confidence/{organelle}/conf_model.pt"
-    test_csv_path = f"{BASE_PATH}/data/{organelle}/image_list_test.csv"
+unet_model_path = f"{MODEL_DIR}/unet/{ORGANELLE}/"
+mg_model_path = f"{MODEL_DIR}/mg/{ORGANELLE}/"
+conf_model_path = f"{MODEL_DIR}/confidence/{ORGANELLE}/conf_model.pt"
+test_csv_path = f"{DATA_DIR}/{ORGANELLE}/image_list_test.csv"
 
-    input_channel=0
-    if organelle == "DNA":
-        target_channel = 1
-    else:
-        target_channel = 3
+input_channel=0
+if ORGANELLE == "DNA":
+    target_channel = 1
+else:
+    target_channel = 3
 
-    # Load neccessary models
-    unet = keras.models.load_model(unet_model_path)
-    mg = keras.models.load_model(mg_model_path)
-    conf_model = ResNet3DRegression(fine_tune_layers='partial')
-    conf_model.load_state_dict(torch.load(conf_model_path, weights_only=True))
-    conf_model.eval()
+# Load neccessary models
+unet = keras.models.load_model(unet_model_path)
+mg = keras.models.load_model(mg_model_path)
+conf_model = ResNet3DRegression(fine_tune_layers='partial')
+conf_model.load_state_dict(torch.load(conf_model_path, weights_only=True))
+conf_model.eval()
 
-    indices = {}
-    i = 0
-    for x in range(0, 496, 96):
-        for y in range(0, 796, 96):
-            indices[i] = (x,y)
-            i += 1
+indices = {}
+i = 0
+for x in range(0, 496, 96):
+    for y in range(0, 796, 96):
+        indices[i] = (x,y)
+        i += 1
 
-    # Check use of GPU
-    if torch.cuda.is_available():
-        print("GPU is available")
-        device = torch.device("cuda")
-    else:
-        print("GPU is not available")
-        device = torch.device("cpu")  # Fallback to CPU if GPU is not available
+# Check use of GPU
+if torch.cuda.is_available():
+    print("GPU is available")
+    device = torch.device("cuda")
+else:
+    print("GPU is not available")
+    device = torch.device("cpu")  # Fallback to CPU if GPU is not available
 
-    # Load data
-    test_data = RegressionTestDataset(test_csv_path, transform=test_transforms, indices=indices)
+# Load data
+test_data = RegressionTestDataset(test_csv_path, transform=test_transforms, indices=indices)
 
-    # Data size
-    print(f"Test data length in patches: {len(test_data)}")
+# Data size
+print(f"Test data length in patches: {len(test_data)}")
 
-    # Run Test
+# Run Test
 
-    error_predictions = []
-    errors = []
+error_predictions = []
+errors = []
 
-    for i in range(len(test_data)):
-        img, err, ip, tp = test_data[i]
-        errors.append(err.numpy()[0])
-        img = torch.from_numpy(np.expand_dims(img, axis=0)).float()
-        pred = conf_model(img)
-        error_predictions.append(float(pred))
+for i in range(len(test_data)):
+    img, err, ip, tp = test_data[i]
+    errors.append(err.numpy()[0])
+    img = torch.from_numpy(np.expand_dims(img, axis=0)).float()
+    pred = conf_model(img)
+    error_predictions.append(float(pred))
 
-    # Save errors+error_predictions
-    error_predictions_np = np.array(error_predictions)
-    np.save(f"{BASE_PATH}/variables/{organelle}_Error_Predictions.npy", error_predictions_np)
-    errors_np = np.array(errors)
-    np.save(f"{BASE_PATH}/variables/{organelle}_Errors.npy", errors_np)
+# Save errors+error_predictions
+error_predictions_np = np.array(error_predictions)
+np.save(f"{VARIABLES_DIR}/{ORGANELLE}_Error_Predictions.npy", error_predictions_np)
+errors_np = np.array(errors)
+np.save(f"{VARIABLES_DIR}/{ORGANELLE}_Errors.npy", errors_np)
