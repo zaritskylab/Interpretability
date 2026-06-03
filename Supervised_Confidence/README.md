@@ -43,11 +43,19 @@ pip install -r requirements.txt
 
 ## Data and Models
 
-Example data and pretrained models will be made available through Zenodo.
+Example data and pretrained models are available through Zenodo.
 
-Zenodo DOI: `TODO`
+Zenodo DOI: `TODO: add final Zenodo DOI after publishing the record`
 
-After downloading, place the files in the following locations:
+Download the following archives:
+
+```text
+confidence_data-20260603T070348Z-3-001.zip
+confidence_data-20260603T070348Z-3-002.zip
+confidence_models-20260603T070310Z-3-001.zip
+```
+
+After downloading and extracting the archives, arrange the files under:
 
 ```text
 Supervised_Confidence/
