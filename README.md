@@ -93,7 +93,7 @@ Large model files and full datasets are not tracked directly in the GitHub repos
 Large data files and trained model checkpoints are not tracked directly in this GitHub repository. Example data and pretrained models should be downloaded separately and placed in the expected project folders.
 
 > **Note:** Example data and pretrained models are available through Zenodo.  
-> Zenodo DOI: `TODO: add final Zenodo DOI after publishing the record`
+> Zenodo DOI: https://doi.org/10.5281/zenodo.20522083
 
 The Zenodo record contains the following archives:
 
@@ -241,7 +241,7 @@ If you use this repository, please cite the associated paper and repository.
   author       = {Miller, Gad and Ben Nedava, Lion and Zaritsky, Assaf},
   year         = {2026},
   howpublished = {\url{https://github.com/zaritskylab/Interpretability}},
-  doi          = {TODO}
+  doi          = {10.5281/zenodo.20522083}
 }
 ```
 
