@@ -45,7 +45,7 @@ Example data is provided in the repository for the nuclear envelope example.
 
 Pretrained models are available through Zenodo.
 
-Zenodo DOI: `TODO: add final Zenodo DOI after publishing the record`
+Zenodo DOI: https://doi.org/10.5281/zenodo.20522083
 
 Download the following archive:
 
