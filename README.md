@@ -261,11 +261,11 @@ If you use this repository, please cite the associated paper and repository.
 
 This work was carried out in collaboration with Lion Ben Nedava. Related MaskInterpreter code can be found here:
 
-https://github.com/lionben89/cell_generator/tree/MaskInterpreter2.0
+[https://github.com/lionben89/cell_generator/tree/MaskInterpreter2.0](https://github.com/zaritskylab/MaskInterpreter)
 
 The single-cell in silico labeling component builds on the CELTIC framework:
 
-https://github.com/zaritskylab/CELTIC
+[https://github.com/zaritskylab/CELTIC](https://github.com/zaritskylab/CELTIC)
 
 ## Contact
 
