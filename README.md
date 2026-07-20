@@ -55,7 +55,7 @@ Each project has its own environment, configuration, notebooks, data paths, and 
 ## Repository Structure
 
 ```text
-Interpretability/
+MaskInterpreter-Applications/
 ├── README.md
 ├── LICENSE
 ├── images/
@@ -169,8 +169,8 @@ For full reproduction or training on additional organelles, follow the CELTIC da
 Clone the repository:
 
 ```bash
-git clone https://github.com/zaritskylab/Interpretability.git
-cd Interpretability
+git clone https://github.com/zaritskylab/MaskInterpreter-Applications.git
+cd MaskInterpreter-Applications
 ```
 
 Then choose one of the two project workflows below.
@@ -240,7 +240,7 @@ If you use this repository, please cite the associated paper and repository.
   title        = {Trustworthy in silico labeling via semantic visual interpretability of image-to-image translation},
   author       = {Miller, Gad and Ben Nedava, Lion and Zaritsky, Assaf},
   year         = {2026},
-  howpublished = {\url{https://github.com/zaritskylab/Interpretability}},
+  howpublished = {\url{https://github.com/zaritskylab/MaskInterpreter-Applications}},
   doi          = {10.5281/zenodo.20522083}
 }
 ```
