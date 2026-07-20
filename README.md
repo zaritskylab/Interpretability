@@ -34,33 +34,16 @@ MaskInterpreter-Applications/
 ├── README.md
 ├── LICENSE
 ├── images/
-│   └── overview.png
 ├── Supervised_Confidence/
-│   ├── README.md
-│   ├── requirements.txt
-│   ├── data/
-│   │   └── Nuclear-envelope/
-│   ├── models/                  # not tracked; downloaded separately
-│   ├── notebooks/
-│   ├── src/
-│   ├── variables/
-│   └── outputs/
 └── Single_Cell_Mask_Interpreter/
-    ├── README.md
-    ├── requirements.txt
-    ├── data/
-    │   └── Nuclear-envelope/
-    ├── models/                  # not tracked; downloaded separately
-    ├── notebooks/
-    └── src/
 ```
 
-The repository is organized as two independent project folders:
+The repository is organized into two independent workflows:
 
-- **`Supervised_Confidence/`** contains the supervised confidence model, its notebooks, source code, example data structure, precomputed variables, and output figures.
-- **`Single_Cell_Mask_Interpreter/`** contains the single-cell MaskInterpreter workflow, including notebooks, source code, and example single-cell data structure.
+* [`Supervised_Confidence/`](Supervised_Confidence/README.md) contains the notebooks, source code, configuration templates, and documentation for training and applying the supervised confidence model.
+* [`Single_Cell_Mask_Interpreter/`](Single_Cell_Mask_Interpreter/README.md) contains the notebooks, source code, configuration templates, and documentation for applying Mask Interpreter to single-cell in silico labeling predictions.
 
-Large model files and full datasets are not tracked directly in the GitHub repository. They should be downloaded separately and placed in the expected directories described below.
+Large data files, pretrained models, and precomputed analysis results are distributed separately through Zenodo. Their download and configuration are described in the relevant workflow documentation.
 
 ---
 ## Models, Data & Access
