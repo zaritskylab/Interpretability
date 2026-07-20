@@ -48,77 +48,22 @@ Large data files, pretrained models, and precomputed analysis results are distri
 ---
 ## Models, Data & Access
 
-Large data files and trained model checkpoints are not tracked directly in this GitHub repository. Example data and pretrained models should be downloaded separately and placed in the expected project folders.
+Large microscopy data, pretrained model checkpoints, and precomputed results are distributed separately and are not tracked directly in this GitHub repository.
 
-> **Note:** Example data and pretrained models are available through Zenodo.  
-> Zenodo DOI: https://doi.org/10.5281/zenodo.20522083
+### Shared Mask Interpreter Resources
 
-The Zenodo record contains the following archives:
+The [original Mask Interpreter Zenodo record](https://doi.org/10.5281/zenodo.18590674) provides the shared resources used by these workflows, including pretrained in silico labeling and field-of-view Mask Interpreter models, Nuclear-envelope field-of-view example data, and train/test lists for the full datasets.
 
-```text
-confidence_data-20260603T070348Z-3-001.zip
-confidence_data-20260603T070348Z-3-002.zip
-confidence_models-20260603T070310Z-3-001.zip
-single_cell_models-20260603T070159Z-3-001.zip
-```
+### Application-Specific Resources
 
-The `confidence_data` archives contain example data for the **Supervised Confidence** workflow.  
-The `confidence_models` archive contains pretrained models for the **Supervised Confidence** workflow.  
-The `single_cell_models` archive contains pretrained models for the **Single Cell Mask Interpreter** workflow.
+Resources introduced by the applications in this repository are available through the [Mask Interpreter Applications Zenodo record](https://doi.org/10.5281/zenodo.20522083). These resources include pretrained supervised confidence models, supervised-confidence analysis results, single-cell Mask Interpreter models, and single-cell example data.
 
-### Supervised Confidence
+The exact files required by each workflow and their expected directory configuration are described in the dedicated documentation:
 
-The **Supervised Confidence** project uses paired label-free microscopy volumes, in silico labeling predictions, MaskInterpreter explanation masks, and ground-truth fluorescence measurements to train and evaluate a supervised confidence model.
+* [Supervised Confidence](Supervised_Confidence/README.md)
+* [Single-Cell Mask Interpreter](Single_Cell_Mask_Interpreter/README.md)
 
-Example data and pretrained models for the nuclear envelope example should be organized as follows:
-
-```text
-Supervised_Confidence/
-├── data/
-│   └── Nuclear-envelope/
-│       └── ...
-├── models/
-│   ├── unet/
-│   ├── mg/
-│   └── confidence/
-├── variables/
-└── outputs/
-```
-
-The `models/` directory is not included in the repository and should be created after downloading the pretrained models.
-
-The `variables/` directory contains precomputed confidence predictions and ground-truth evaluation results for the nuclear envelope example. These files are used for generating the plots provided in `outputs/`.
-
-For full reproduction of the paper results, the full microscopy data should be downloaded from the Allen Institute for Cell Science:
-
-https://www.allencell.org/data-downloading.html#sectionLabelFreeTrainingData
-
-After downloading the full data, update the relevant CSV files under `Supervised_Confidence/data/` so that they point to the local data location on your machine or cluster.
-
-### Single Cell Mask Interpreter
-
-The **Single Cell Mask Interpreter** project uses single-cell-resolution label-free microscopy volumes, cell masks, and fluorescence measurements to generate MaskInterpreter explanation masks for single-cell in silico labeling predictions.
-
-Example nuclear envelope data is provided in the repository. Pretrained models should be downloaded separately and organized as follows:
-
-```text
-Single_Cell_Mask_Interpreter/
-├── data/
-│   └── Nuclear-envelope/
-│       └── ...
-├── models/
-│   ├── unet/
-│   └── mg/
-└── outputs/
-```
-
-The `models/` directory is not included in the repository and should be created after downloading the pretrained models.
-
-This project builds on the single-cell in silico labeling framework described in the CELTIC repository:
-
-https://github.com/zaritskylab/CELTIC
-
-For full reproduction or training on additional organelles, follow the CELTIC data preparation instructions and update the local paths and metadata files accordingly.
+Full microscopy datasets are not redistributed through this repository or its companion Zenodo record. Instructions for obtaining and preparing the full datasets from their original sources are provided in the relevant workflow documentation.
 
 ---
 
