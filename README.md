@@ -13,7 +13,7 @@ The two applications address different questions and are provided as independent
 
 The supervised confidence workflow estimates patch-level in silico labeling performance from two inputs: the in silico labeling prediction and its corresponding importance mask. A 3D regression model predicts the in silico labeling error, which is converted into a confidence score for identifying predictions that may be unsuitable for downstream biological analysis.
 
-![Supervised confidence workflow](images/overview.png)
+![Supervised confidence workflow](images/confidence_pipeline.jpg)
 
 [View the Supervised Confidence documentation](Supervised_Confidence/README.md)
 
