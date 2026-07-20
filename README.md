@@ -21,7 +21,7 @@ The supervised confidence workflow estimates patch-level in silico labeling perf
 
 The Single-Cell Mask Interpreter workflow applies Mask Interpreter to single-cell in silico labeling predictions. It generates importance masks that identify image regions important for preserving each prediction, enabling explanation signatures to be examined at single-cell resolution.
 
-![Supervised confidence workflow](images/overview.png)
+![Single-cell Mask Interpreter workflow](images/Single_Cell_Overview.png)
 
 [View the Single-Cell Mask Interpreter documentation](Single_Cell_Mask_Interpreter/README.md)
 
