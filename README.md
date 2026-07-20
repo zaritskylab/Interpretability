@@ -1,12 +1,13 @@
-# MaskInterpreter Applications for In Silico Labeling
+# Mask Interpreter Applications for In Silico Labeling
+
+This repository accompanies research from the [Zaritsky Lab of Computational Cell Dynamics](https://www.assafzaritsky.com/) on interpretability and confidence estimation for in silico labeling predictions. It provides two complementary applications of Mask Interpreter: a supervised confidence model that estimates patch-level in silico labeling performance using the predicted fluorescence image and its corresponding importance mask, and a single-cell workflow that generates importance masks and explanation signatures for single-cell in silico labeling predictions.
 
 Preprint link will be added upon publication.
 
-This repository accompanies an upcoming research paper from the Zaritsky Lab of Computational Cell Dynamics on confidence estimation and interpretability for in silico labeling predictions.
-
 ## Project Description
 
-This repository contains two related applications of MaskInterpreter for in silico labeling microscopy models. Although both projects use MaskInterpreter-based explanations, they answer different questions and should be treated as separate workflows.
+The two applications address different questions and are provided as independent workflows, each with dedicated code, configuration, environment, and documentation.
+
 
 ### 1. Supervised Confidence
 
