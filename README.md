@@ -9,48 +9,19 @@ Preprint link will be added upon publication.
 The two applications address different questions and are provided as independent workflows, each with dedicated code, configuration, environment, and documentation.
 
 
-### 1. Supervised Confidence
+### Supervised Confidence
 
-The **Supervised Confidence** project uses MaskInterpreter explanation masks as part of a supervised model for estimating the reliability of in silico labeling predictions.
+The supervised confidence workflow estimates patch-level in silico labeling performance from two inputs: the in silico labeling prediction and its corresponding importance mask. A 3D regression model predicts the in silico labeling error, which is converted into a confidence score for identifying predictions that may be unsuitable for downstream biological analysis.
 
-- **Input:** In silico labeling predictions and their corresponding MaskInterpreter explanation masks.
-- **Goal:** Estimate how reliable an in silico labeling prediction is at the patch level.
-- **Output:** A confidence score together with evaluation metrics and downstream analyses.
-- **Main use case:** Identifying which in silico labeling predictions are reliable enough for downstream biological analysis.
+![Supervised confidence workflow](images/overview.png)
 
-This project is located under:
+[View the Supervised Confidence documentation](Supervised_Confidence/README.md)
 
-```text
-Supervised_Confidence/
-```
+### Single-Cell Mask Interpreter
 
-### 2. Single Cell Mask Interpreter
+The Single-Cell Mask Interpreter workflow applies Mask Interpreter to single-cell in silico labeling predictions. It generates importance masks that identify image regions important for preserving each prediction, enabling explanation signatures to be examined at single-cell resolution.
 
-The **Single Cell Mask Interpreter** project applies MaskInterpreter to single-cell-resolution in silico labeling predictions.
-
-- **Input:** Single-cell label-free microscopy images and in silico labeling model predictions.
-- **Goal:** Generate visual explanations that highlight which regions are important for preserving the in silico labeling prediction.
-- **Output:** Single-cell importance masks and visualization outputs.
-- **Main use case:** Interpreting in silico labeling predictions at single-cell resolution.
-
-This project is located under:
-
-```text
-Single_Cell_Mask_Interpreter/
-```
-
-### Relationship between the projects
-
-The two projects are connected by their use of MaskInterpreter, but they are not the same workflow.
-
-The **Single Cell Mask Interpreter** project focuses on generating visual explanations for single-cell in silico labeling predictions. The **Supervised Confidence** project uses in silico labeling predictions and explanation masks as inputs to a supervised model that predicts confidence or expected prediction quality.
-
-Each project has its own environment, configuration, notebooks, data paths, and model files.
-
-<p align="center">
-  <img src="images/overview.png" alt="Project overview" width="520"/>
-</p>
-
+[View the Single-Cell Mask Interpreter documentation](Single_Cell_Mask_Interpreter/README.md)
 ---
 
 ## Repository Structure
