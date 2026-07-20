@@ -125,7 +125,7 @@ https://github.com/zaritskylab/CELTIC
 
 For questions, please contact:
 
-- Gad Miller: gadmicha@post.bgu.ac.il
+- Gad Miller: gadmiller7@gmail.com
 - Lion Ben Nedava: lionben89@gmail.com
 - Prof. Assaf Zaritsky: assafzar@gmail.com
 
