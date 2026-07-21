@@ -1,0 +1,12 @@
+# Local configuration
+**/config.yaml
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Generated outputs
+**/outputs/
