@@ -55,26 +55,17 @@ The environment has been installed successfully when Python can import the requi
 
 ## Data and Models
 
-Example data is provided in the repository for the nuclear envelope example.
+The pretrained models and example data required for the Single-Cell Mask Interpreter demonstration are distributed through the [Mask Interpreter Applications Zenodo record](https://doi.org/10.5281/zenodo.20522083).
 
-Pretrained models are available through Zenodo.
+The single-cell resources include:
 
-Zenodo DOI: https://doi.org/10.5281/zenodo.20522083
+- Nuclear-envelope single-cell example data.
+- The pretrained in silico labeling model used by the single-cell workflow.
+- The pretrained Mask Interpreter model used to generate single-cell importance masks.
 
-Download the following archive:
+The resources may be extracted to any suitable location on the local machine or computing cluster. They do not need to be placed inside the cloned GitHub repository. Their locations are specified through the workflow configuration file.
 
-```text
-single_cell_models-20260603T070159Z-3-001.zip
-```
-
-After downloading and extracting the archive, arrange the model files under:
-
-```text
-Single_Cell_Mask_Interpreter/
-├── models/
-│   ├── unet/
-│   └── mg/
-```
+The full single-cell datasets are not redistributed through this repository or its companion Zenodo record. Instructions for obtaining and preparing the full data are provided in the [CELTIC repository](https://github.com/zaritskylab/CELTIC).
 
 ## Configuration
 
