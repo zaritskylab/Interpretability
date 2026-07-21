@@ -1,15 +1,17 @@
 # Supervised Confidence
 
-This folder contains the supervised confidence model workflow for in silico labeling predictions.
+This directory contains the code and resources for training, evaluating, and applying the supervised confidence model to in silico labeling predictions.
 
-The model uses in silico labeling predictions together with MaskInterpreter explanation masks to estimate prediction reliability. The output is a confidence score that can be used to identify predictions that are reliable enough for downstream biological analysis.
+The model receives an in silico labeling prediction and its corresponding Mask Interpreter-derived importance mask as inputs. It estimates the prediction error relative to the fluorescence ground truth, with confidence defined as one minus the predicted error. The resulting confidence score can be used to identify predictions that may be unsuitable for downstream biological analysis.
 
 ## Workflow Overview
 
-- **Input:** in silico labeling predictions and corresponding MaskInterpreter explanation masks.
-- **Target:** prediction quality measured against fluorescence ground truth.
-- **Output:** confidence score and evaluation metrics.
-- **Main use case:** filtering or prioritizing in silico labeling predictions for biological analysis.
+* **Inputs:** An in silico labeling prediction and its corresponding importance mask.
+* **Training target:** Patch-level in silico labeling error, defined from the Pearson correlation between the prediction and fluorescence ground truth.
+* **Output:** A predicted error and corresponding confidence score.
+* **Primary use:** Estimating the reliability of in silico labeling predictions before downstream analysis.
+
+For an overview of both applications, return to the [main repository README](../README.md).
 
 ## Directory Structure
 
