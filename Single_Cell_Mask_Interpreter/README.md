@@ -1,15 +1,17 @@
-# Single Cell Mask Interpreter
+# Single-Cell Mask Interpreter
 
-This folder contains the single-cell MaskInterpreter workflow for in silico labeling predictions.
+This directory contains the code and resources for applying Mask Interpreter to single-cell in silico labeling predictions.
 
-The workflow applies MaskInterpreter to single-cell-resolution images in order to generate visual explanations for in silico labeling predictions.
+The workflow generates an importance mask for each single-cell prediction, identifying regions of the label-free input whose preservation is important for maintaining the corresponding in silico labeling output. These masks enable explanation signatures to be examined at single-cell resolution.
 
 ## Workflow Overview
 
-- **Input:** single-cell label-free microscopy images and in silico labeling model predictions.
-- **Goal:** identify image regions that are important for preserving the in silico labeling prediction.
-- **Output:** single-cell importance masks and visualization outputs.
-- **Main use case:** interpreting in silico labeling predictions at single-cell resolution.
+- **Inputs:** A single-cell label-free microscopy image and its corresponding in silico labeling prediction.
+- **Goal:** Identify input-image regions that are important for preserving the in silico labeling prediction.
+- **Output:** A single-cell importance mask and corresponding visualization outputs.
+- **Primary use:** Interpreting and comparing in silico labeling predictions at single-cell resolution.
+
+For an overview of both applications, return to the [main repository README](../README.md).
 
 ## Directory Structure
 
