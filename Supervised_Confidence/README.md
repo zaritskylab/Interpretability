@@ -15,23 +15,24 @@ For an overview of both applications, return to the [main repository README](../
 
 ## Directory Structure
 
+The supervised confidence workflow is organized as follows:
+
 ```text
 Supervised_Confidence/
 ├── README.md
+├── config.example.yaml
 ├── requirements.txt
-├── data/
-│   └── Nuclear-envelope/
-├── models/
-│   ├── unet/
-│   ├── mg/
-│   └── confidence/
 ├── notebooks/
 ├── src/
-├── variables/
 └── outputs/
 ```
 
-The `models/` directory is not tracked by GitHub and should be created after downloading the pretrained models.
+* `notebooks/` contains the demonstration, training, evaluation, and analysis notebooks.
+* `src/` contains reusable code for data loading, model definition, training, inference, and evaluation.
+* `config.example.yaml` provides a template for specifying the locations of data, pretrained models, precomputed results, and generated outputs.
+* `outputs/` is used for generated checkpoints, predictions, figures, and other workflow outputs.
+
+Microscopy data, pretrained models, and precomputed result arrays are not intended to be stored inside the cloned repository. They are downloaded separately and referenced through the configuration file.
 
 ## Setup
 
