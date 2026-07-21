@@ -164,3 +164,36 @@ Reproducing the complete supervised confidence training and evaluation workflow 
 4. Update `config.yaml` so that `data_dir`, `model_dir`, `variables_dir`, and `output_dir` point to the appropriate locations on your machine or computing cluster.
 
 The full microscopy datasets should remain outside the cloned GitHub repository. The pretrained Nuclear-envelope demonstration does not require downloading or preparing the complete datasets.
+
+## Troubleshooting
+
+### TensorFlow does not detect the GPU in Jupyter
+
+On some managed Jupyter or cluster installations, TensorFlow may be installed with CUDA support but still return no visible GPUs:
+
+```python
+import tensorflow as tf
+print(tf.config.list_physical_devices("GPU"))
+```
+
+If the result is an empty list while the GPU is visible through `nvidia-smi`, the Jupyter kernel may not be receiving the Conda environment's library path.
+
+Add the following environment entry to the `kernel.json` file for the relevant Jupyter kernel:
+
+```json
+"env": {
+  "LD_LIBRARY_PATH": "/path/to/conda/env/lib"
+}
+```
+
+For example:
+
+```json
+"env": {
+  "LD_LIBRARY_PATH": "/home/USERNAME/.conda/envs/supervised_confidence/lib"
+}
+```
+
+After editing the kernelspec, fully terminate the current Jupyter session or compute node and start a new one. Restarting only the notebook kernel may not be sufficient.
+
+This step is only required when TensorFlow cannot detect the GPU; it is not part of the standard installation.
