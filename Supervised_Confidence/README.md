@@ -79,15 +79,23 @@ The resources may be extracted to any suitable location on the local machine or 
 
 ## Configuration
 
-Before running the notebooks, copy the example configuration file:
+Before running the notebooks, create a local configuration file from the provided template:
 
 ```bash
 cp config.example.yaml config.yaml
 ```
 
-Then edit `config.yaml` so that the paths point to the data, models, outputs, and variables directories on your machine or cluster.
+Edit `config.yaml` so that each path points to the appropriate location on your machine or computing cluster:
 
-The notebooks and scripts should read paths from `config.yaml` instead of relying on the current working directory.
+* `data_dir`: Input microscopy data.
+* `model_dir`: Pretrained in silico labeling, Mask Interpreter, and supervised confidence models.
+* `variables_dir`: Precomputed supervised-confidence results used for evaluation and figure reproduction.
+* `output_dir`: Generated predictions, checkpoints, figures, and other outputs.
+* `organelle`: Organelle used by the workflow.
+
+The code repository, input data, pretrained models, precomputed results, and generated outputs may all be stored in separate filesystem locations. The downloaded resources do not need to be moved into the cloned GitHub repository.
+
+`config.yaml` is machine-specific and should not be committed to GitHub.
 
 ## Running the Demo
 
