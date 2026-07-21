@@ -114,7 +114,7 @@ jupyter notebook
 
 Then open the [supervised confidence inference notebook](notebooks/inference.ipynb) and run all cells from a clean kernel.
 
-The notebook applies the pretrained supervised confidence model to the Nuclear-envelope example data and produces predicted errors and corresponding confidence scores. It does not retrain the model or overwrite the pretrained checkpoints.
+The notebook applies the pretrained supervised confidence model to the Nuclear-envelope example data and produces a confidence map over a Field of view image. It does not retrain the model or overwrite the pretrained checkpoints.
 
 ## Training and Evaluation
 
@@ -133,23 +133,23 @@ Full model training is computationally intensive and is intended for users repro
 
 ## Reproducing Figures
 
-Precomputed variables for the nuclear envelope example are provided under:
+The [plotting notebook](notebooks/plotting.ipynb) uses precomputed supervised-confidence results to generate the corresponding evaluation plots.
 
-```text
-variables/
+Before running the notebook, confirm that:
+
+- `variables_dir` in `config.yaml` points to the downloaded supervised-confidence result arrays.
+- `output_dir` points to a writable location for generated figures.
+- The required result files are available for the organelles or analyses being reproduced.
+
+Start Jupyter from the `Supervised_Confidence/` directory:
+
+```bash
+jupyter notebook
 ```
 
-Figures are saved under:
+Then open `notebooks/plotting.ipynb` and run the relevant sections.
 
-```text
-outputs/
-```
-
-To reproduce example plots, run the relevant plotting notebook under:
-
-```text
-notebooks/
-```
+Generated figures are saved under the configured `output_dir`. Reproducing the full manuscript analyses requires the complete precomputed results, whereas the Nuclear-envelope example resources support only the corresponding demonstration.
 
 ## Full Data Reproduction
 
