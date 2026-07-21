@@ -57,31 +57,25 @@ The environment has been installed successfully when Python can import the requi
 
 ## Data and Models
 
-Example data and pretrained models are available through Zenodo.
+The supervised confidence demonstration requires resources from two Zenodo records.
 
-Zenodo DOI: https://doi.org/10.5281/zenodo.20522083
+### Shared In Silico Labeling and Mask Interpreter Resources
 
-Download the following archives:
+Download the shared resources from the [original Mask Interpreter Zenodo record](https://doi.org/10.5281/zenodo.18590674). These include:
 
-```text
-confidence_data-20260603T070348Z-3-001.zip
-confidence_data-20260603T070348Z-3-002.zip
-confidence_models-20260603T070310Z-3-001.zip
-```
+* Pretrained in silico labeling models.
+* Pretrained field-of-view Mask Interpreter models.
+* Nuclear-envelope field-of-view example data.
+* Train/test lists for the full datasets.
 
-After downloading and extracting the archives, arrange the files under:
+### Supervised Confidence Resources
 
-```text
-Supervised_Confidence/
-├── data/
-│   └── Nuclear-envelope/
-├── models/
-│   ├── unet/
-│   ├── mg/
-│   └── confidence/
-```
+Download the application-specific resources from the [Mask Interpreter Applications Zenodo record](https://doi.org/10.5281/zenodo.20522083). These include:
 
-The `variables/` directory contains precomputed confidence predictions and ground-truth evaluation results for the nuclear envelope example. These files are used for reproducing example plots.
+* Pretrained supervised confidence models.
+* Precomputed prediction and error arrays used for evaluation and figure reproduction.
+
+The resources may be extracted to any suitable location on the local machine or computing cluster. They do not need to be placed inside the cloned GitHub repository. Their locations are specified through the workflow configuration file.
 
 ## Configuration
 
