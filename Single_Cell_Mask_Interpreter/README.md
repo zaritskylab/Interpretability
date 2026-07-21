@@ -23,8 +23,7 @@ Single_Cell_Mask_Interpreter/
 ├── config.example.yaml
 ├── requirements.txt
 ├── notebooks/
-├── src/
-└── outputs/
+└── src/
 ```
 
 - `notebooks/` contains the demonstration, training, and inference workflows.
