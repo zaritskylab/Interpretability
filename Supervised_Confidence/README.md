@@ -53,6 +53,14 @@ From the `Supervised_Confidence/` directory, install the required dependencies:
 pip install -r requirements.txt
 ```
 
+Register the environment as a Jupyter kernel:
+
+```bash
+python -m ipykernel install --user \
+  --name supervised_confidence \
+  --display-name "Python (supervised_confidence)"
+```
+
 The workflow was tested with Python 3.10.14, TensorFlow 2.8.4, PyTorch 2.3.1, and torchvision 0.18.1 on an NVIDIA GeForce RTX 4090. The environment has been installed successfully when the required packages import correctly and the GPU is detected. See [Troubleshooting](#troubleshooting) if TensorFlow does not detect the GPU in a managed Jupyter environment.
 
 ## Data and Models
