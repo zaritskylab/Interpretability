@@ -8,7 +8,7 @@ The model receives an in silico labeling prediction and its corresponding Mask I
 
 * **Inputs:** An in silico labeling prediction and its corresponding importance mask.
 * **Training target:** Patch-level in silico labeling error, defined from the Pearson correlation between the prediction and fluorescence ground truth.
-* **Output:** A predicted error and corresponding confidence score.
+* **Output:** A predicted error score.
 * **Primary use:** Estimating the reliability of in silico labeling predictions before downstream analysis.
 
 For an overview of both applications, return to the [main repository README](../README.md).
