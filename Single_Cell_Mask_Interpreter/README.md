@@ -109,23 +109,20 @@ The notebook applies the pretrained in silico labeling and Mask Interpreter mode
 
 Generating the importance mask requires sliding over the full three-dimensional volume and may take a substantial amount of time. GPU execution is required for practical use.
 
-## Training and Inference
+## Training
 
-Additional notebooks are provided under:
+The [single-cell Mask Interpreter training notebook](notebooks/train_no_context.ipynb) contains the workflow used to train Mask Interpreter without cellular context.
 
-```text
-notebooks/
-```
+This notebook is not required for running the pretrained demonstration. Before using it, confirm that:
 
-These include workflows for training and inference with or without context.
+- The full prepared single-cell dataset is available.
+- The pretrained in silico labeling model is available.
+- The paths in `config.yaml` point to the full data, pretrained models, and output locations.
+- A CUDA-capable GPU is available.
 
-Training outputs should be saved under:
+The notebook trains a new Mask Interpreter model for single-cell in silico labeling predictions. Generated checkpoints and training outputs should be written to the configured `output_dir`. Do not save new checkpoints directly into the downloaded pretrained `model_dir` unless intentionally replacing an existing model.
 
-```text
-outputs/checkpoints/
-```
-
-Do not save new training outputs directly into `models/` unless you intentionally want to replace a pretrained checkpoint.
+Full training is computationally intensive and is intended for users reproducing or extending the workflow.
 
 ## Relation to CELTIC
 
