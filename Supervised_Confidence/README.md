@@ -153,8 +153,14 @@ Generated figures are saved under the configured `output_dir`. Reproducing the f
 
 ## Full Data Reproduction
 
-Full reproduction requires downloading the complete microscopy data from the Allen Institute for Cell Science:
+Reproducing the complete supervised confidence training and evaluation workflow requires the full label-free microscopy datasets from the Allen Institute for Cell Science.
 
-https://www.allencell.org/data-downloading.html#sectionLabelFreeTrainingData
+1. Download the required datasets from the [Allen Cell data download page](https://www.allencell.org/data-downloading.html#sectionLabelFreeTrainingData).
 
-After downloading the full data, update the metadata CSV files under `data/` so that they point to your local data location.
+2. Prepare the downloaded field-of-view data by following the data-preparation instructions and scripts in the [Mask Interpreter repository](https://github.com/zaritskylab/MaskInterpreter). In particular, the repository provides the full-volume preparation workflow under `create_data/`.
+
+3. Use the full-data train/test lists supplied in the [original Mask Interpreter Zenodo record](https://doi.org/10.5281/zenodo.18590674).
+
+4. Update `config.yaml` so that `data_dir`, `model_dir`, `variables_dir`, and `output_dir` point to the appropriate locations on your machine or computing cluster.
+
+The full microscopy datasets should remain outside the cloned GitHub repository. The pretrained Nuclear-envelope demonstration does not require downloading or preparing the complete datasets.
