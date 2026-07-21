@@ -54,9 +54,7 @@ pip install -r requirements.txt
 Register the environment as a Jupyter kernel:
 
 ```bash
-python -m ipykernel install --user \
-  --name single_cell_mask_interpreter \
-  --display-name "Python (single_cell_mask_interpreter)"
+python -m ipykernel install --user --name single_cell_mask_interpreter --display-name "Python (single_cell_mask_interpreter)"
 ```
 
 The environment has been installed successfully when Python can import the required packages and detect the available GPU. Exact tested framework and CUDA versions will be documented after the dependency specification is finalized.
