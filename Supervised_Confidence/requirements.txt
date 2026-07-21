@@ -1,0 +1,30 @@
+# Deep-learning frameworks
+tensorflow==2.8.4
+keras==2.8.0
+torch==2.3.1
+torchvision==0.18.1
+spektral==1.0.6
+
+# Numerical and tabular processing
+numpy==1.23.5
+pandas==2.2.2
+scipy==1.13.1
+scikit-learn==1.5.0
+scikit-image==0.19.3
+
+# Microscopy and image processing
+tifffile==2024.5.22
+imagecodecs==2025.3.30
+opencv-python-headless==4.10.0.82
+Pillow==10.3.0
+
+# Plotting
+matplotlib==3.9.0
+matplotlib-scalebar==0.9.0
+
+# Configuration
+PyYAML==6.0.1
+
+# Notebook execution
+notebook==7.2.1
+ipykernel==6.29.4
