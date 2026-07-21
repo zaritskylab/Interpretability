@@ -15,21 +15,24 @@ For an overview of both applications, return to the [main repository README](../
 
 ## Directory Structure
 
+The Single-Cell Mask Interpreter workflow is organized as follows:
+
 ```text
 Single_Cell_Mask_Interpreter/
 ├── README.md
+├── config.example.yaml
 ├── requirements.txt
-├── data/
-│   └── Nuclear-envelope/
-├── models/
-│   ├── unet/
-│   └── mg/
 ├── notebooks/
 ├── src/
 └── outputs/
 ```
 
-The `models/` directory is not tracked by GitHub and should be created after downloading the pretrained models.
+- `notebooks/` contains the demonstration, training, and inference workflows.
+- `src/` contains reusable code for data loading, model definition, Mask Interpreter execution, and visualization.
+- `config.example.yaml` provides a template for specifying the locations of example or full data, pretrained models, and generated outputs.
+- `outputs/` is used for generated importance masks, figures, checkpoints, and other workflow outputs.
+
+Single-cell example data and pretrained models are not stored inside the cloned repository. They are downloaded separately and referenced through the configuration file.
 
 ## Setup
 
