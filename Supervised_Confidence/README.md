@@ -118,19 +118,18 @@ The notebook applies the pretrained supervised confidence model to the Nuclear-e
 
 ## Training and Evaluation
 
-Training and evaluation notebooks are provided under:
+The [training and evaluation notebook](notebooks/train_eval.ipynb) contains the workflow used to train and evaluate the supervised confidence model on the full datasets.
 
-```text
-notebooks/
-```
+This notebook is not required for running the pretrained demonstration. Before using it, confirm that:
 
-Training outputs should be saved under:
+- The full microscopy data and corresponding split files are available.
+- The required in silico labeling and Mask Interpreter models have been downloaded.
+- The paths in `config.yaml` point to the full data, pretrained models, precomputed results, and output locations.
+- A CUDA-capable GPU is available.
 
-```text
-outputs/checkpoints/
-```
+Training checkpoints, generated predictions, and evaluation outputs should be written to the configured `output_dir`. Do not save new checkpoints directly into the pretrained `model_dir` unless intentionally replacing an existing model.
 
-Do not save new training outputs directly into `models/` unless you intentionally want to replace a pretrained checkpoint.
+Full model training is computationally intensive and is intended for users reproducing or extending the complete workflow.
 
 ## Reproducing Figures
 
