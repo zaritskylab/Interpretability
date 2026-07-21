@@ -1,2 +1,0 @@
-,Unnamed: 0,organelle,FOVId,CellId,cell_stage,this_cell_index,exclude,signal_file,target_file,mask_file
-510,510,nuclear-envelope,2475,305110,M0,13,0,2475_305110_signal.tiff,2475_305110_target.tiff,2475_305110_mask.tiff
