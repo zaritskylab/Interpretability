@@ -32,15 +32,26 @@ Single_Cell_Mask_Interpreter/
 
 Single-cell example data and pretrained models are not stored inside the cloned repository. They are downloaded separately and referenced through the configuration file.
 
-## Setup
+## Hardware Requirements
 
-Create and activate the environment:
+A CUDA-capable NVIDIA GPU is required for practical execution of the Single-Cell Mask Interpreter workflow. Generating importance masks across a full three-dimensional image volume is computationally intensive and is not intended to run on CPU.
+
+## Installation
+
+Create and activate a dedicated Conda environment:
 
 ```bash
 conda create -n single_cell_mask_interpreter python=3.9.15
 conda activate single_cell_mask_interpreter
+```
+
+From the `Single_Cell_Mask_Interpreter/` directory, install the required dependencies:
+
+```bash
 pip install -r requirements.txt
 ```
+
+The environment has been installed successfully when Python can import the required packages and detect the available GPU. Exact tested framework and CUDA versions will be documented after the dependency specification is finalized.
 
 ## Data and Models
 
