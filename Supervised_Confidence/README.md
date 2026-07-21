@@ -53,7 +53,7 @@ From the `Supervised_Confidence/` directory, install the required dependencies:
 pip install -r requirements.txt
 ```
 
-The environment has been installed successfully when Python can import the required packages and detect the available GPU. Exact tested framework and CUDA versions will be documented after the dependency specification is finalized.
+The workflow was tested with Python 3.10.14, TensorFlow 2.8.4, PyTorch 2.3.1, and torchvision 0.18.1 on an NVIDIA GeForce RTX 4090. The environment has been installed successfully when the required packages import correctly and the GPU is detected. See [Troubleshooting](#troubleshooting) if TensorFlow does not detect the GPU in a managed Jupyter environment.
 
 ## Data and Models
 
@@ -115,6 +115,8 @@ jupyter notebook
 Then open the [supervised confidence inference notebook](notebooks/inference.ipynb) and run all cells from a clean kernel.
 
 The notebook applies the pretrained supervised confidence model to the Nuclear-envelope example data and produces a confidence map over a Field of view image. It does not retrain the model or overwrite the pretrained checkpoints.
+
+On an NVIDIA GeForce RTX 4090, the sliding-window inference step over the provided Nuclear-envelope example took approximately 25 minutes. The remaining notebook steps completed within a short time. Runtime may vary depending on GPU hardware and storage performance.
 
 ## Training and Evaluation
 
