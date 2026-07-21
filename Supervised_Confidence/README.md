@@ -34,15 +34,26 @@ Supervised_Confidence/
 
 Microscopy data, pretrained models, and precomputed result arrays are not intended to be stored inside the cloned repository. They are downloaded separately and referenced through the configuration file.
 
-## Setup
+## Hardware Requirements
 
-Create and activate the environment:
+A CUDA-capable NVIDIA GPU is required for practical execution of the supervised confidence workflow. Model inference and training are computationally intensive and are not intended to run on CPU.
+
+## Installation
+
+Create and activate a dedicated Conda environment:
 
 ```bash
 conda create -n supervised_confidence python=3.10.14
 conda activate supervised_confidence
+```
+
+From the `Supervised_Confidence/` directory, install the required dependencies:
+
+```bash
 pip install -r requirements.txt
 ```
+
+The environment has been installed successfully when Python can import the required packages and detect the available GPU. Exact tested framework and CUDA versions will be documented after the dependency specification is finalized.
 
 ## Data and Models
 
