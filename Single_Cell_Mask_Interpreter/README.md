@@ -29,7 +29,6 @@ Single_Cell_Mask_Interpreter/
 - `notebooks/` contains the demonstration, training, and inference workflows.
 - `src/` contains reusable code for data loading, model definition, Mask Interpreter execution, and visualization.
 - `config.example.yaml` provides a template for specifying the locations of example or full data, pretrained models, and generated outputs.
-- `outputs/` is used for generated importance masks, figures, checkpoints, and other workflow outputs.
 
 Single-cell example data and pretrained models are not stored inside the cloned repository. They are downloaded separately and referenced through the configuration file.
 
