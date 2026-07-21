@@ -88,17 +88,26 @@ The code repository, input data, pretrained models, and generated outputs may al
 
 `config.yaml` is machine-specific and should not be committed to GitHub.
 
-## Running the Demo
+## Running the Demonstration
 
-After installing the environment and downloading the pretrained models, run:
+Before running the demonstration, confirm that:
+
+- The Single-Cell Mask Interpreter environment is active.
+- A CUDA-capable GPU is available.
+- The required example data and pretrained models have been downloaded.
+- All paths in `config.yaml` point to the correct locations.
+
+Start Jupyter from the `Single_Cell_Mask_Interpreter/` directory:
 
 ```bash
-jupyter notebook notebooks/inference.ipynb
+jupyter notebook
 ```
 
-This notebook runs MaskInterpreter on the nuclear envelope single-cell example data.
+Then open the [single-cell inference notebook](notebooks/inference_no_context.ipynb) and run all cells from a clean kernel.
 
-The demo does not retrain the model and does not overwrite pretrained checkpoints.
+The notebook applies the pretrained in silico labeling and Mask Interpreter models to the Nuclear-envelope single-cell example data and generates the corresponding importance mask and visualization outputs. It does not retrain the models or overwrite the pretrained checkpoints.
+
+Generating the importance mask requires sliding over the full three-dimensional volume and may take a substantial amount of time. GPU execution is required for practical use.
 
 ## Training and Inference
 
