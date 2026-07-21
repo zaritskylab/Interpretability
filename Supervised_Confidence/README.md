@@ -97,17 +97,24 @@ The code repository, input data, pretrained models, precomputed results, and gen
 
 `config.yaml` is machine-specific and should not be committed to GitHub.
 
-## Running the Demo
+## Running the Demonstration
 
-After installing the environment and downloading the example data and models, run:
+Before running the demonstration, confirm that:
+
+- The supervised confidence environment is active.
+- A CUDA-capable GPU is available.
+- The required resources have been downloaded.
+- All paths in `config.yaml` point to the correct locations.
+
+Start Jupyter from the `Supervised_Confidence/` directory:
 
 ```bash
-jupyter notebook notebooks/inference.ipynb
+jupyter notebook
 ```
 
-This notebook runs inference with the pretrained confidence model on the nuclear envelope example data.
+Then open the [supervised confidence inference notebook](notebooks/inference.ipynb) and run all cells from a clean kernel.
 
-The demo does not retrain the model and does not overwrite pretrained checkpoints.
+The notebook applies the pretrained supervised confidence model to the Nuclear-envelope example data and produces predicted errors and corresponding confidence scores. It does not retrain the model or overwrite the pretrained checkpoints.
 
 ## Training and Evaluation
 
