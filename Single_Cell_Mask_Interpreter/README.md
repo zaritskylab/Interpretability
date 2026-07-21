@@ -69,15 +69,24 @@ The full single-cell datasets are not redistributed through this repository or i
 
 ## Configuration
 
-Before running the notebooks, copy the example configuration file:
+Before running the notebooks, create a local configuration file from the provided template:
 
 ```bash
 cp config.example.yaml config.yaml
 ```
 
-Then edit `config.yaml` so that the paths point to the data, models and outputs directories on your machine or cluster.
+Edit `config.yaml` so that each path points to the appropriate location on your machine or computing cluster:
 
-The notebooks and scripts should read paths from `config.yaml` instead of relying on the current working directory.
+- `data_dir`: Single-cell example data or a prepared full dataset.
+- `model_dir`: Pretrained in silico labeling and Mask Interpreter models.
+- `output_dir`: Generated importance masks, figures, checkpoints, and other outputs.
+- `organelle`: Organelle used by the workflow.
+
+The code repository, input data, pretrained models, and generated outputs may all be stored in separate filesystem locations. The downloaded resources do not need to be moved into the cloned GitHub repository.
+
+`output_dir` does not need to be located inside `Single_Cell_Mask_Interpreter/`, but it must point to an existing writable location.
+
+`config.yaml` is machine-specific and should not be committed to GitHub.
 
 ## Running the Demo
 
