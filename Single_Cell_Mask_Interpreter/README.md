@@ -57,7 +57,7 @@ Register the environment as a Jupyter kernel:
 python -m ipykernel install --user --name single_cell_mask_interpreter --display-name "Python (single_cell_mask_interpreter)"
 ```
 
-The environment has been installed successfully when Python can import the required packages and detect the available GPU. Exact tested framework and CUDA versions will be documented after the dependency specification is finalized.
+The workflow was tested with Python 3.9.15, PyTorch 2.5.1, and torchvision 0.20.1 on an NVIDIA GeForce RTX 4090. The environment has been installed successfully when the required packages import correctly and PyTorch detects the available GPU.
 
 ## Data and Models
 
@@ -113,7 +113,7 @@ Then open the [single-cell inference notebook](notebooks/inference_no_context.ip
 
 The notebook applies the pretrained in silico labeling and Mask Interpreter models to the Nuclear-envelope single-cell example data and generates the corresponding importance mask and visualization outputs. It does not retrain the models or overwrite the pretrained checkpoints.
 
-Generating the importance mask requires sliding over the full three-dimensional volume and may take a substantial amount of time. GPU execution is required for practical use.
+On an NVIDIA GeForce RTX 4090, the provided Nuclear-envelope demonstration completed in under one minute. Runtime may vary depending on GPU hardware and storage performance.
 
 ## Training
 
