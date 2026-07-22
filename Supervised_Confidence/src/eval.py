@@ -337,7 +337,7 @@ ORGANELLE = cfg["organelle"]
     
 unet_model_path = f"{MODEL_DIR}/unet/{ORGANELLE}/"
 mg_model_path = f"{MODEL_DIR}/mg/{ORGANELLE}/"
-conf_model_path = f"{MODEL_DIR}/confidence/{ORGANELLE}/conf_model.pt"
+conf_model_path = f"{MODEL_DIR}/confidence/{ORGANELLE}/model.pt"
 test_csv_path = f"{DATA_DIR}/{ORGANELLE}/image_list_test.csv"
 
 input_channel=0
