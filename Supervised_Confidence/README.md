@@ -91,19 +91,43 @@ Organize the model folders under a common parent directory:
 
 ```text
 models/
-├── unet/         # In silico labeling models from the original Mask Interpreter Zenodo record
-├── mg/           # Mask Interpreter models from the original Mask Interpreter Zenodo record
-└── confidence/   # Supervised confidence models from the companion Zenodo record
+├── unet/          # In silico labeling models from the original Mask Interpreter record
+├── mg/            # Mask Interpreter models from the original Mask Interpreter record
+└── confidence/    # Supervised confidence models from the companion record
 ```
 
-The supervised confidence result arrays may remain in a separate directory:
+Preserve the complete directory structure of every TensorFlow model under `unet/` and `mg/`. In particular, each TensorFlow SavedModel requires its internal `variables/` directory alongside `saved_model.pb`:
+
+```text
+unet/
+└── <organelle>/
+    ├── saved_model.pb
+    ├── variables/
+    │   ├── variables.data-00000-of-00001
+    │   └── variables.index
+    └── assets/                         # When supplied
+
+mg/
+└── <organelle>/
+    ├── saved_model.pb
+    ├── variables/
+    │   ├── variables.data-00000-of-00001
+    │   └── variables.index
+    └── assets/                         # When supplied
+```
+
+Do not copy only `saved_model.pb`; TensorFlow cannot load the model without its corresponding internal `variables/` directory.
+
+The separate top-level `variables/` directory from `Supervised_Confidence.zip` contains precomputed NumPy result arrays:
 
 ```text
 variables/
 └── *.npy
 ```
 
-Set `model_dir` in `config.yaml` to the common `models/` directory and set `variables_dir` to the downloaded `variables/` directory. The microscopy data may be stored separately and specified through `data_dir`.
+This top-level directory is unrelated to the internal TensorFlow SavedModel `variables/` directories.
+
+Set `model_dir` in `config.yaml` to the common `models/` directory, and set `variables_dir` to the separate directory containing the precomputed `.npy` arrays. The microscopy data may be stored separately and specified through `data_dir`.
 
 ## Configuration
 
