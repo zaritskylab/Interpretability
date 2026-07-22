@@ -61,13 +61,7 @@ The workflow was tested with Python 3.9.15, PyTorch 2.5.1, and torchvision 0.20.
 
 ## Data and Models
 
-The pretrained models and example data required for the Single-Cell Mask Interpreter demonstration are distributed through the [Mask Interpreter Applications Zenodo record](https://doi.org/10.5281/zenodo.20522083).
-
-The single-cell resources include:
-
-- Nuclear-envelope single-cell example data.
-- The pretrained in silico labeling model used by the single-cell workflow.
-- The pretrained Mask Interpreter model used to generate single-cell importance masks.
+Download `Single_Cell_Mask_Interpreter.zip` from the [Mask Interpreter Applications Zenodo record](https://doi.org/10.5281/zenodo.20522083). The archive contains the pretrained models and example data required for the Single-Cell Mask Interpreter demonstration.
 
 The resources may be extracted to any suitable location on the local machine or computing cluster. They do not need to be placed inside the cloned GitHub repository. Their locations are specified through the workflow configuration file.
 
