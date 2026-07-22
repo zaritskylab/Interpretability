@@ -2,7 +2,7 @@
 
 data_dir: "/path/to/example_or_full_data"
 model_dir: "/path/to/pretrained_models"
-variables_dir: "/path/to/supervised_confidence/results"
+variables_dir: "/path/to/supervised_confidence/variables"
 output_dir: "/path/to/generated_outputs"
 
 organelle: "Nuclear-envelope"
