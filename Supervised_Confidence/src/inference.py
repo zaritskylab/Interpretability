@@ -142,12 +142,6 @@ mg_model_path = f"{MODEL_DIR}/mg/{ORGANELLE}/"
 conf_model_path = f"{MODEL_DIR}/confidence/{ORGANELLE}/model.pt"
 test_csv_path = f"{DATA_DIR}/{ORGANELLE}/image_list_test.csv"
 
-input_channel=0
-if ORGANELLE == "DNA":
-    target_channel=1
-else:
-    target_channel=3
-
 # Load neccessary models
 unet = load_model(unet_model_path)
 mg = load_model(mg_model_path)
@@ -170,11 +164,9 @@ for path in test_csv['path_tiff']:
     image = tiff.imread(fixed_path)
     image_num = fixed_path.stem.split("_")[-1]
 
-    input_image = image[input_channel, :, :, :]
+    input_image = image
     Z, X, Y = input_image.shape
-    
-    target_image = image[target_channel, :, :, :]
-    
+        
     input_image = normalize_std(input_image)
 
     # Compute padding
@@ -182,9 +174,8 @@ for path in test_csv['path_tiff']:
     pad_x = compute_padding(X, patch_size[1], stride_xy)
     pad_y = compute_padding(Y, patch_size[2], stride_xy)
     
-    # Pad input and target symmetrically
+    # Pad input
     input_padded = np.pad(input_image, (pad_z, pad_x, pad_y), mode='reflect')
-    target_padded = np.pad(target_image, (pad_z, pad_x, pad_y), mode='reflect')
     
     # Update dimensions for loop
     Z_pad, X_pad, Y_pad = input_padded.shape
@@ -203,11 +194,9 @@ for path in test_csv['path_tiff']:
             for k in range(0, Y_pad - patch_size[2] + 1, stride_xy):
                 # Slice patch
                 patch_input = input_padded[i:i+patch_size[0], j:j+patch_size[1], k:k+patch_size[2]]
-                patch_target = target_padded[i:i+patch_size[0], j:j+patch_size[1], k:k+patch_size[2]]
     
                 # Prepare for models (N, D, H, W, C)
                 patch_input_tensor = np.expand_dims(patch_input, axis=(0, -1))  # shape: (1, D, H, W, 1)
-                patch_target_tensor = np.expand_dims(patch_target, axis=(0, -1))  # shape: (1, D, H, W, 1)
     
                 # ISL prediction
                 patch_prediction = unet(patch_input_tensor)  # shape: (1, D, H, W, 1)
