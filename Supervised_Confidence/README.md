@@ -129,6 +129,14 @@ This top-level directory is unrelated to the internal TensorFlow SavedModel `var
 
 Set `model_dir` in `config.yaml` to the common `models/` directory, and set `variables_dir` to the separate directory containing the precomputed `.npy` arrays. The microscopy data may be stored separately and specified through `data_dir`.
 
+### Example Data and Full Training Data
+
+The Nuclear-envelope example data provided through the original Mask Interpreter Zenodo record contains three-dimensional image volumes with shape `(Z, Y, X)`. These files are intended only for running the pretrained inference demonstration.
+
+The original microscopy data used for model training is four-dimensional, with shape `(C, Z, Y, X)`, and includes multiple channels, such as the label-free input and corresponding fluorescence ground truth. These additional channels are required to generate training targets and train or evaluate the models on the full dataset.
+
+Therefore, the three-dimensional example data should not be used for model training. To reproduce training or evaluation on the full datasets, download the original Allen Cell microscopy data and prepare it using the instructions provided in the [Mask Interpreter repository](https://github.com/zaritskylab/MaskInterpreter).
+
 ## Configuration
 
 Before running the notebooks, create a local configuration file from the provided template:
