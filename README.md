@@ -56,7 +56,10 @@ The [original Mask Interpreter Zenodo record](https://doi.org/10.5281/zenodo.185
 
 ### Application-Specific Resources
 
-Resources introduced by the applications in this repository are available through the [Mask Interpreter Applications Zenodo record](https://doi.org/10.5281/zenodo.20522083). These resources include pretrained supervised confidence models, supervised-confidence analysis results, single-cell Mask Interpreter models, and single-cell example data.
+Resources introduced by the applications in this repository are available through the [Mask Interpreter Applications Zenodo record](https://doi.org/10.5281/zenodo.20522083):
+
+- `Supervised_Confidence.zip` contains the pretrained supervised confidence models and precomputed result arrays.
+- `Single_Cell_Mask_Interpreter.zip` contains the single-cell example data and pretrained models required for the Single-Cell Mask Interpreter workflow.
 
 The exact files required by each workflow and their expected directory configuration are described in the dedicated documentation:
 
