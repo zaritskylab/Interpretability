@@ -76,10 +76,10 @@ Download the shared resources from the [original Mask Interpreter Zenodo record]
 
 ### Supervised Confidence Resources
 
-Download the application-specific resources from the [Mask Interpreter Applications Zenodo record](https://doi.org/10.5281/zenodo.20522083). These include:
+Download `Supervised_Confidence.zip` from the [Mask Interpreter Applications Zenodo record](https://doi.org/10.5281/zenodo.20522083). The archive contains:
 
-* Pretrained supervised confidence models.
-* Precomputed prediction and error arrays used for evaluation and figure reproduction.
+- Pretrained supervised confidence models.
+- Precomputed prediction and error arrays used for evaluation and figure reproduction.
 
 The resources may be extracted to any suitable location on the local machine or computing cluster. They do not need to be placed inside the cloned GitHub repository. Their locations are specified through the workflow configuration file.
 
