@@ -71,6 +71,8 @@ The single-cell resources include:
 
 The resources may be extracted to any suitable location on the local machine or computing cluster. They do not need to be placed inside the cloned GitHub repository. Their locations are specified through the workflow configuration file.
 
+After extracting the archive, set `data_dir` to the included `example_data/` directory and `model_dir` to the included `models/` directory. Preserve the internal folder structure and filenames provided in the archive.
+
 The full single-cell datasets are not redistributed through this repository or its companion Zenodo record. Instructions for obtaining and preparing the full data are provided in the [CELTIC repository](https://github.com/zaritskylab/CELTIC).
 
 ## Configuration
