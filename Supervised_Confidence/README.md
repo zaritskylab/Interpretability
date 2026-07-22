@@ -83,6 +83,28 @@ Download the application-specific resources from the [Mask Interpreter Applicati
 
 The resources may be extracted to any suitable location on the local machine or computing cluster. They do not need to be placed inside the cloned GitHub repository. Their locations are specified through the workflow configuration file.
 
+### Organizing the downloaded resources
+
+The supervised confidence workflow uses upstream models from the original Mask Interpreter Zenodo record together with the supervised confidence models provided in the companion Zenodo record.
+
+Organize the model folders under a common parent directory:
+
+```text
+models/
+├── unet/         # In silico labeling models from the original Mask Interpreter Zenodo record
+├── mg/           # Mask Interpreter models from the original Mask Interpreter Zenodo record
+└── confidence/   # Supervised confidence models from the companion Zenodo record
+```
+
+The supervised confidence result arrays may remain in a separate directory:
+
+```text
+variables/
+└── *.npy
+```
+
+Set `model_dir` in `config.yaml` to the common `models/` directory and set `variables_dir` to the downloaded `variables/` directory. The microscopy data may be stored separately and specified through `data_dir`.
+
 ## Configuration
 
 Before running the notebooks, create a local configuration file from the provided template:
